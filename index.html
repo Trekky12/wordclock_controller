@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex,nofollow">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>WordClock Controller</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
+    <link rel="shortcut icon" href="./favicon.ico">
+    <meta name="theme-color" content="#000000" />
+
+    <link rel="stylesheet" href="style.css?v=20240130o">
+
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register('/sw.js').then(registration => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                }).catch(error => {
+                    console.error('Service Worker registration failed:', error);
+                });
+            });
+        }
+    </script>
+    <script defer src="./main.js?v=20240130"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <h1>WordClock</h1>
+        </div>
+    </header>
+
+    <section>
+        <div class="container select-color">
+            <h2>Color</h2>
+            <input type="color" class="color" name="color" />
+
+            <button type="button" class="primary sendColor">Set color</button>
+        </div>
+        <div class="container timezone">
+            <h2>Timezone</h2>
+            <div>
+                <input type="radio" name="tz" id="tz_summer" value="2" checked />
+                <label for="tz_summer">Summer</label>
+            </div>
+            <div>
+                <input type="radio" name="tz" id="tz_winter" value="1" />
+                <label for="tz_winter">Winter</label>
+            </div>
+
+            <button type="button" class="primary sendTimezone">Set timezone</button>
+        </div>
+        <div class="container settings">
+            <h2>Settings</h2>
+            <label>AccessToken:</label>
+            <input type="text" name="accessToken" required="required" />
+
+            <label>Device-ID:</label>
+            <input type="text" name="deviceID" required="required" />
+
+            <button type="button" class="primary storeSettings">Save settings</button>
+            <button type="button" class="clearSettings">Clear settings</button>
+        </div>
+    </section>
+
+
+</body>
+
+</html>
